@@ -1,0 +1,31 @@
+{
+  "name": "url-shortener",
+  "version": "1.0.0",
+  "description": "url shortener",
+  "main": "myApp.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adambrikman/url-shortener.git"
+  },
+  "keywords": [
+    "url",
+    "shortener"
+  ],
+  "author": "Adam Brikman",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/adambrikman/url-shortener/issues"
+  },
+  "homepage": "https://github.com/adambrikman/url-shortener#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.1",
+    "dotenv": "^8.1.0",
+    "express": "^5.0.0-alpha.7",
+    "mongodb": "^3.2.2",
+    "mongoose": "^5.4.20"
+  }
+}

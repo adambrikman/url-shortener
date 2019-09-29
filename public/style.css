@@ -1,74 +1,148 @@
-/****** Main Styling ******/
+@import url("https://fonts.googleapis.com/css?family=Quattrocento");
+
+@import url("https://fonts.googleapis.com/css?family=Mansalva&display=swap");
 
 body {
-	font-family: 'Roboto', sans-serif;
-	font-size: 16px;
-	color: #222;
-	background-color: #FaFaFa;
-	text-align: center;
-	line-height: 1.4em;
+  align-items: center;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  font-family: Quattrocento, arial;
+  justify-content: center;
+  margin: 0;
+  min-height: 52rem;
+  padding: 0;
+  text-align: center;
+  width: 100%;
+}
+
+#url_input:focus,
+.shortURL:focus,
+.btn:focus,
+.copyBtn {
+  box-shadow: none !important;
+  outline: 0;
 }
 
 .container {
-	padding: 0;
-	margin-top: 40px;
-}
-
-h3 {
-  margin-top: 30px;
-}
-
-.footer {
-	margin-top: 40px;
-}
-
-.user-stories {
-  position: relative;
-  text-align: justify;
-  max-width: 700px;
-  margin: 15px auto;
-}
-code {
-  font-family: monospace;
-  padding: 2px;
-  color: black;
-  background-color: #fff;
-}
-ol {
-	list-style-position: inside;
-}
-ul {
-	list-style-type: none;
-}
-
-li {
-  margin-bottom: 0.5em;
-}
-.user-stories li {
-  margin-bottom: 1em;
-}
-
-a {
-	color: #2574A9;
+  padding-bottom: 35vh;
 }
 
 form {
-  border: solid 1px black;
-  border-radius: 5px;
-  margin: 10px auto;
-  padding: 20px;
-  max-width: 600px;
-}
-
-label {
-  margin-right: 10px;
+  margin: 0 auto;
+  max-width: 37rem;
 }
 
 input {
-  padding: 5px;
+  padding: 7px;
+  background-color: #fbfbf8;
+  border-radius: 1rem;
 }
 
-input[type=text] {
-  width: 220px;
+input:focus::-webkit-input-placeholder {
+  color: transparent;
+  transition-duration: 0.3s;
+}
+
+input[type="text"] {
+  font-family: Quattrocento, arial;
+  padding-left: 1rem;
+  width: 30rem;
+}
+
+.title {
+  align-items: center;
+  font-family: "Mansalva", cursive;
+  font-size: 7rem;
+}
+
+.title a {
+  text-decoration: none;
+  color: black;
+}
+
+@media only screen and (max-width: 600px) {
+  input[type="text"] {
+    padding-left: 1rem;
+    width: 12rem;
+  }
+}
+
+body {
+  background: linear-gradient(
+    135deg,
+    #ff0000 15%,
+    #fefdfb 15%,
+    #fefdfb 85%,
+    #ff0000 85%
+  );
+}
+
+.errorMessage {
+  display: inline-block;
+  position: absolute;
+  left: 50%;
+  margin-left: -50px;
+  color: white;
+}
+
+.shortURL {
+  display: inline-block;
+}
+
+.btn {
+  border-radius: 1rem;
+  /* border: none; */
+  color: white;
+  padding: 7px 12px;
   text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-family: Quattrocento, arial;
+  font-weight: bold;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.shortenBtn {
+  background-color: #ff0000;
+}
+
+.copyBtn {
+  background-color: black;
+}
+
+.copyBtnPosition {
+  margin-right: 1.4rem;
+}
+
+.shortURL {
+  display: inline-block;
+}
+
+#copyAlert {
+  /* position: absolute;
+  left: 50%;
+  margin-left: -50px;
+  bottom: 49%; */
+}
+
+.shortURLContainer {
+  background-color: rgb(232, 232, 232, 0.5);
+  height: 5rem;
+  border-radius: 1rem;
+}
+
+.errorContainer {
+  background-color: rgb(255, 0, 0, 1);
+  height: 1.5rem;
+  border-radius: 1rem;
+  padding-top: 5px;
+  margin-left: 25%;
+  width: 50%;
+}
+
+.shortURLPosition {
+  padding-top: 20px;
+  padding-left: 10px;
 }

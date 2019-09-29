@@ -1,0 +1,18 @@
+<div class="container">
+  <h1 class="title">
+    <a href="/">Brev-i</a>
+  </h1>
+  <form action="/new" method="POST">
+    <input
+      id="url_input"
+      type="text"
+      name="url"
+      placeholder="Shorten your link"
+    />
+    <button type="submit" class="btn shortenBtn">Shorten</button>
+  </form>
+  <br />
+  <br />
+  <%- include('./partials/errorMessage.ejs') %> <%-
+  include('./partials/shortURL.ejs') %>
+</div>

@@ -4,7 +4,8 @@
   "description": "url shortener",
   "main": "myApp.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "devStart": "nodemon server.js"
   },
   "repository": {
     "type": "git",
@@ -21,11 +22,15 @@
   },
   "homepage": "https://github.com/adambrikman/url-shortener#readme",
   "dependencies": {
-    "body-parser": "^1.19.0",
     "cors": "^2.8.1",
+    "ejs": "^2.7.1",
+    "express": "^4.17.1",
+    "express-ejs-layouts": "^2.5.0",
+    "mongoose": "^5.7.1"
+  },
+  "devDependencies": {
     "dotenv": "^8.1.0",
-    "express": "^5.0.0-alpha.7",
-    "mongodb": "^3.2.2",
-    "mongoose": "^5.4.20"
+    "nodemon": "^1.19.2",
+    "prettier": "^1.18.2"
   }
 }

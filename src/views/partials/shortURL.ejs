@@ -1,0 +1,23 @@
+<% if(locals.short_url != null) { %>
+
+<span id="copyAlert"></span>
+<div class="shortURLContainer">
+  <div class="shortURLPosition">
+    <input type="text" class="shortURL" value = <%= short_url %> >
+    <span class="copyBtnPosition">
+      <button class="btn copyBtn" onclick="copyURL()">Copy</button>
+    </span>
+  </div>
+</div>
+<% } %>
+
+<script>
+  const copyURL = () => {
+    var copyText = document.querySelector(".shortURL");
+    copyText.select();
+    copyText.setSelectionRange(0, 99999);
+    document.execCommand("copy");
+
+    document.getElementById("copyAlert").textContent = "Copied!";
+  };
+</script>

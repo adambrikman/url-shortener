@@ -1,33 +1,53 @@
-'use strict';
+if (process.env.NODE_ENV !== "production") {
+  require("dotenv").config();
+}
 
-var express = require('express');
-var mongoose = require('mongoose');
-var bodyParser = require('body-parser');
-var cors = require('cors');
-var app = express();
-var myApp = require('./myApp');
+("use strict");
 
-require('dotenv').config();
+const express = require("express");
+const app = express();
+const cors = require("cors");
+const expressLayouts = require("express-ejs-layouts");
 
-// Basic Configuration 
-var port = process.env.PORT || 3000;
+const indexRouter = require("./src/routes/index");
+// var myApp = require('./myApp');
 
-/** connect to DB **/
-mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true });
+// use ejs as view engine
+app.set("view engine", "ejs");
+// set where views are coming from (which is our views directory)
+app.set("views", __dirname + "/src/views");
+// hookup express layouts (set what our layout file is going to be)
+app.set("layout", "layouts/layout");
+// tell our app we want to use expressLayouts
+app.use(expressLayouts);
+
+app.use(express.static("public"));
+
+// parse POST requests
+app.use(express.urlencoded({ extended: false }));
 
 app.use(cors());
 
-/** parse POST bodies **/
-app.use(bodyParser.urlencoded({extended: false}));
-
-app.use('/public', express.static(process.cwd() + '/public'));
-
-app.get('/', function(req, res){
-  res.sendFile(process.cwd() + '/views/index.html');
+const mongoose = require("mongoose");
+mongoose.connect(process.env.MONGO_URI, {
+  useNewUrlParser: true,
+  useCreateIndex: true,
+  useUnifiedTopology: true
 });
+const db = mongoose.connection;
+db.on("error", error => console.error(error));
+db.once("open", () => console.error("Connected to Mongoose"));
 
-app.listen(port, function () {
-  console.log('Node.js listening ...');
-});
+app.use("/", indexRouter);
 
-app.use(myApp);
+app.listen(process.env.PORT || 3000);
+
+// app.use('/public', express.static(process.cwd() + '/public'));
+
+// app.get('/', function(req, res){
+//   res.sendFile(process.cwd() + '/views/index.ejs');
+// });
+
+// Listen on a certain port
+
+// app.use(myApp);

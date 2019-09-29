@@ -11,7 +11,7 @@ router.get("/", (req, res) => {
 });
 
 // Add short-code (for short URL) to DB
-router.post("/new", (req, res) => {
+router.post("/", (req, res) => {
   // Get URL that was submitted by the user
   let originalURL = req.body.url;
 

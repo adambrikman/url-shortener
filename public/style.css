@@ -2,30 +2,59 @@
 
 @import url("https://fonts.googleapis.com/css?family=Mansalva&display=swap");
 
+.animate {
+  animation: disappear 0.8s linear;
+}
+
 body {
   align-items: center;
+  background: linear-gradient(
+    135deg,
+    #ff0000 15%,
+    #fefdfb 15%,
+    #fefdfb 85%,
+    #ff0000 85%
+  );
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   font-family: Quattrocento, arial;
   justify-content: center;
   margin: 0;
-  min-height: 52rem;
   padding: 0;
   text-align: center;
   width: 100%;
 }
 
-#url_input:focus,
-.shortURL:focus,
-.btn:focus,
-.copyBtn {
-  box-shadow: none !important;
-  outline: 0;
+.btn {
+  border-radius: 1rem;
+  color: white;
+  padding: 7px 12px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-family: Quattrocento, arial;
+  font-weight: bold;
+  font-size: 14px;
+  cursor: pointer;
 }
 
 .container {
-  padding-bottom: 35vh;
+  padding-top: 17vh;
+  padding-bottom: 42vh;
+}
+
+.copyBtn {
+  background-color: black;
+}
+
+.copyBtnPosition {
+  margin-right: 1.4rem;
+}
+
+.copyMsg {
+  padding-top: 5px;
+  opacity: 0;
 }
 
 form {
@@ -61,21 +90,18 @@ input[type="text"] {
   color: black;
 }
 
-@media only screen and (max-width: 600px) {
-  input[type="text"] {
-    padding-left: 1rem;
-    width: 12rem;
-  }
+.errorBox {
+  background-color: rgb(255, 0, 0, 1);
+  height: 1.5rem;
+  border-radius: 1rem;
+  padding-top: 5px;
+  margin-left: 25%;
+  width: 50%;
+  position: absolute;
 }
 
-body {
-  background: linear-gradient(
-    135deg,
-    #ff0000 15%,
-    #fefdfb 15%,
-    #fefdfb 85%,
-    #ff0000 85%
-  );
+.errorContainer {
+  position: relative;
 }
 
 .errorMessage {
@@ -86,63 +112,71 @@ body {
   color: white;
 }
 
-.shortURL {
+/* .shortURL {
   display: inline-block;
-}
-
-.btn {
-  border-radius: 1rem;
-  /* border: none; */
-  color: white;
-  padding: 7px 12px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-family: Quattrocento, arial;
-  font-weight: bold;
-  font-size: 14px;
-  cursor: pointer;
-}
+} */
 
 .shortenBtn {
   background-color: #ff0000;
 }
 
-.copyBtn {
-  background-color: black;
-}
-
-.copyBtnPosition {
-  margin-right: 1.4rem;
-}
-
-.shortURL {
-  display: inline-block;
-}
-
-#copyAlert {
-  /* position: absolute;
-  left: 50%;
-  margin-left: -50px;
-  bottom: 49%; */
-}
-
-.shortURLContainer {
+.shortURLBox {
   background-color: rgb(232, 232, 232, 0.5);
   height: 5rem;
   border-radius: 1rem;
+  vertical-align: top;
 }
 
-.errorContainer {
-  background-color: rgb(255, 0, 0, 1);
-  height: 1.5rem;
-  border-radius: 1rem;
-  padding-top: 5px;
-  margin-left: 25%;
-  width: 50%;
+.shortURLContainer {
+  position: absolute;
 }
 
 .shortURLPosition {
   padding-top: 20px;
   padding-left: 10px;
+}
+
+/* CSS with multiple classes/ids */
+
+.shortURLBox,
+.errorBox {
+  animation: moveInTop 0.5s;
+}
+
+#url_input:focus,
+.shortURL:focus,
+.btn:focus,
+.copyBtn {
+  box-shadow: none !important;
+  outline: 0;
+}
+
+/* Animations */
+@keyframes moveInTop {
+  0% {
+    opacity: 0;
+    transform: translateY(-3rem);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes disappear {
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+/* Media Queries */
+@media only screen and (max-width: 600px) {
+  input[type="text"] {
+    padding-left: 1rem;
+    width: 12rem;
+  }
 }

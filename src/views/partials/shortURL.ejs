@@ -1,13 +1,18 @@
 <% if(locals.short_url != null) { %>
 
-<span id="copyAlert"></span>
 <div class="shortURLContainer">
-  <div class="shortURLPosition">
-    <input type="text" class="shortURL" value = <%= short_url %> >
-    <span class="copyBtnPosition">
-      <button class="btn copyBtn" onclick="copyURL()">Copy</button>
-    </span>
+  <div class="shortURLBox">
+    <div class="shortURLPosition">
+      <input type="text" class="shortURL" value = <%= short_url %> >
+      <span class="copyBtnPosition">
+        <button class="btn copyBtn" onclick="copyURL()">
+          Copy
+        </button>
+      </span>
+    </div>
   </div>
+  <br />
+  <span class="copyMsg">Copied!</span>
 </div>
 <% } %>
 
@@ -18,6 +23,12 @@
     copyText.setSelectionRange(0, 99999);
     document.execCommand("copy");
 
-    document.getElementById("copyAlert").textContent = "Copied!";
+    const copyMsg = document.querySelector(".copyMsg:not(.animate)");
+    if (copyMsg) {
+      copyMsg.classList.add("animate");
+      copyMsg.addEventListener("animationend", () =>
+        copyMsg.classList.remove("animate")
+      );
+    }
   };
 </script>

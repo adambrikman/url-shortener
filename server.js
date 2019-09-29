@@ -10,7 +10,6 @@ const cors = require("cors");
 const expressLayouts = require("express-ejs-layouts");
 
 const indexRouter = require("./src/routes/index");
-// var myApp = require('./myApp');
 
 // use ejs as view engine
 app.set("view engine", "ejs");
@@ -41,13 +40,3 @@ db.once("open", () => console.error("Connected to Mongoose"));
 app.use("/", indexRouter);
 
 app.listen(process.env.PORT || 3000);
-
-// app.use('/public', express.static(process.cwd() + '/public'));
-
-// app.get('/', function(req, res){
-//   res.sendFile(process.cwd() + '/views/index.ejs');
-// });
-
-// Listen on a certain port
-
-// app.use(myApp);

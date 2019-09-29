@@ -5,9 +5,6 @@ const dns = require("dns");
 // Import schema
 const Url = require("../models/url");
 
-// Import functions
-const ejs_helpers = require("../JS/functions");
-
 // Render index.ejs
 router.get("/", (req, res) => {
   res.render("index");
@@ -22,7 +19,6 @@ router.post("/new", (req, res) => {
   assigned 'short code'; otherwise, this is a new URL - shorten it */
   findOriginalURL(originalURL, (err, data) => {
     if (data !== null) {
-      console.log(ejs_helpers.makeCopyBtnVisible);
       res.render("index", {
         short_url: process.env.BASE_URL + data.short
       });
@@ -127,10 +123,6 @@ const findOriginalByShortCode = (shortCode, done) => {
     return done(null, data);
   });
 };
-
-// On form submission, make "copy" buton visible
-
-// Copy short URL
 
 // ------------------------------ //
 module.exports = router;

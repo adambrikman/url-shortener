@@ -59,13 +59,6 @@ router.post("/", (req, res) => {
   });
 });
 
-// Redirect user to original URL
-router.get("/:short_url?", (req, res) => {
-  findOriginalByShortCode(req.params.short_url, (err, data) => {
-    res.redirect(data[0].original);
-  });
-});
-
 /* --- Functions --- */
 
 // Create a 7 character 'short-code' to add onto the end of a short URL
@@ -111,14 +104,6 @@ const saveShortCode = (elem, done) => {
 // Lookup the original Url in the DB (in case of repeat entries of the same URL)
 const findOriginalURL = (elem, done) => {
   Url.findOne({ original: elem }, (err, data) => {
-    if (err) return done(err);
-    return done(null, data);
-  });
-};
-
-// Lookup the short-code in the DB (Used to redirect user to original URL)
-const findOriginalByShortCode = (shortCode, done) => {
-  Url.find({ short: shortCode }, (err, data) => {
     if (err) return done(err);
     return done(null, data);
   });

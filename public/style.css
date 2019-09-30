@@ -40,7 +40,7 @@ body {
 }
 
 .container {
-  padding-top: 17vh;
+  padding-top: 18vh;
   padding-bottom: 42vh;
 }
 
@@ -59,7 +59,7 @@ body {
 
 form {
   margin: 0 auto;
-  max-width: 37rem;
+  max-width: 38rem;
 }
 
 input {

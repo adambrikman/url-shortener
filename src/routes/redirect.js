@@ -6,7 +6,6 @@ const Url = require("../models/url");
 
 // Redirect user to original URL
 router.get("/:short_url?", (req, res) => {
-  console.log("sup");
   findOriginalByShortCode(req.params.short_url, (err, data) => {
     res.redirect(data[0].original);
   });
